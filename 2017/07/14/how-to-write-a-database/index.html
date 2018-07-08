@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A portfolio template that uses Material Design Lite.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="keywords" content="Crazy Ana wangminxiang 汪旻翔 ab abao blog tech ryougi doaman luis">
+    <meta name="baidu-site-verification" content="Hpzxiw1B40" />
+    
+    <title>Crazy Ana</title>
+    <link rel="icon" href="/image/favicon.ico">
+    <link href="https://cdn.bootcss.com/material-design-icons/3.0.1/iconfont/material-icons.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/material-design-lite/1.3.0/material.indigo-pink.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/foundation.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style/done.css" />
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout done">
+        <header class="mdl-layout__header mdl-layout__header--scroll header">
+    <div class="mdl-layout__header-row">
+
+    </div>
+    <div class="mdl-layout__header-row logo-row">
+                <span class="mdl-layout__title">
+                    <div class="logo"></div>
+                    <span class="mdl-layout__title">Crazy Ana</span>
+                </span>
+    </div>
+    <div class="mdl-layout__header-row">
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+            
+            <a class="mdl-navigation__link " href="/"><i class="material-icons">explore</i>&nbsp;HOME</a>
+            <a class="mdl-navigation__link " href="/search/"><i class="material-icons">search</i>&nbsp;SEARCH</a>
+            <a class="mdl-navigation__link " href="/tag/"><i class="material-icons">local_offer</i>&nbsp;ARCHIVES</a>
+            <a class="mdl-navigation__link" href="https://github.com/RyougiNevermore" target="_blank"><i class="material-icons">face</i>&nbsp;GITHUB</a>
+            <a class="mdl-navigation__link " href="/about/"><i class="material-icons">description</i>&nbsp;ABOUT</a>
+        </nav>
+    </div>
+</header>
+
+<div class="mdl-layout--small-screen-only header-small ">
+    <div class="logo-small"></div>
+</div>
+
+<div class="mdl-layout__drawer mdl-layout--small-screen-only">
+    <span class="mdl-layout-title">Crazy Ana</span>
+    <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="/"><i class="material-icons">explore</i>&nbsp;HOME</a>
+        <a class="mdl-navigation__link" href="/tag/"><i class="material-icons">local_offer</i>&nbsp;ARCHIVES</a>
+        <a class="mdl-navigation__link" href="https://github.com/RyougiNevermore" target="_blank"><i class="material-icons">face</i>&nbsp;GITHUB</a>
+        <a class="mdl-navigation__link" href="/about/"><i class="material-icons">description</i>&nbsp;ABOUT</a>
+        <a class="mdl-navigation__link " href="/search/"><i class="material-icons">search</i>&nbsp;SEARCH</a>
+    </nav>
+</div>
+
+        <main class="mdl-layout__content">
+            
+
+<div class="page-content post mdl-grid">
+    <!-- page card >>> -->
+    <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp">
+        <!-- title and bg -->
+        <div class="mdl-card__title" style="background: url('/material/material-51.jpg') center / cover; cursor: pointer;">
+            <h2 class="mdl-card__title-text">
+                How to write [A] Database
+            </h2>
+        </div>
+        <!-- create time -->
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col mdl-color-text--grey-700 mdl-card__supporting-text meta">
+                <div><strong>28th July 14th 2017</strong></div>
+            </div>
+        </div>
+        <!-- description -->
+        <div class="mdl-card__supporting-text">
+            <div class="mdl-grid post-content">
+                <div class="mdl-cell mdl-cell--12-col">
+                    <p>Its a great question, and deserves a long answer.<br>Most database servers are built in C, and store data using B-tree type constructs.<br>In the old days there was a product called C-Isam (c library for an indexed sequential access method) which is a low level library to help C programmers write data in B-tree format.<br>So you need to know about btrees and understand what these are.</p>
+<p>Most databases store data separate to indexes. Lets assume a record (or row) is 800 bytes long and you write 5 rows of data to a file.<br>If the row contains columns such as first name, last name, address etc. and you want to search for a specific record by last name, you can open the file and sequentially search through each record but this is very slow.</p>
+<p>Instead you open an index file which just contains the lastname and the position of the record in the data file.<br>Then when you have the position you open the data file,<br>lseek to that position and read the data.<br>Because index data is very small it is much quicker to search through index files.</p>
+<p>Also as the index files are stored in btrees in it very quick to effectively do a quicksearch (divide and conquer) to find the record you are looking for.</p>
+<p>So you understand for one “table” you will have a data file with the data and one (or many) index files.</p>
+<p>The first index file could be for lastname, the next could be to search by SS number etc.</p>
+<p>When the user defines their query to get some data, they decide which index file to search through.</p>
+<p>If you can find any info on C-ISAM (there used to be an open source version (or cheap commercial) called D-ISAM) you will understand this concept quite well.</p>
+<p>Once you have stored data and have index files, using an ISAM type approach allows you to GET a record based on a value, or PUT a new record.</p>
+<p>However modern database servers all support SQL, so you need an SQL parser that translates the SQL statement into a sequence of related GETs.</p>
+<p>SQL may join 2 tables so an optimizer is also needed to decide which table to read first (normally based on number of rows in each table and indexes available) and how to relate it to the next table.</p>
+<p>SQL can INSERT data so you need to parse that into PUT statements but it can also combine multiple INSERTS into transactions so you need a transaction manager to control this, and you will need transaction logs to store wip/completed transactions.<br>It is possible you will need some backup/restore commands to backup your data files and index files and maybe also your transaction log files, and if you really want to go for it you could write some replication tools to read your transaction log and replicate the transactions to a backup database on a different server. Note if you want your client programs (for example an SQL UI like phpmyadmin) to reside on separate machine than your database server you will need to write a connection manager that sends the SQL requests over TCP/IP to your server, then authenticate it using some credentials, parse the request, run your GETS and send back the data to the client.<br>So these database servers can be a lot of work, especially for one person. But you can create simple versions of these tools one at a time. Start with how to store data and indexes, and how to retrieve data using an ISAM type interface.<br>There are books out there - look for older books on mysql and msql, look for anything on google re btrees and isam, look for open source C libraries that already do isam. Get a good understanding on file IO on a linux machine using C. Many commercial databases now dont even use the filesystem for their data files because of cacheing issues - they write directly to raw disk. You want to just write to files initially.<br>I hope this helps a little bit.</p>
+
+                </div>
+            </div>
+        </div>
+        <!-- tags -->
+        
+        <div class="mdl-card__actions ">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col">
+        
+                    <a href="/tags/数据库/" class="mdl-chip tag">
+                        <span class="mdl-chip__text mdl-color-text--grey-600">数据库</span>
+                    </a>
+        
+                    <a href="/tags/程序设计/" class="mdl-chip tag">
+                        <span class="mdl-chip__text mdl-color-text--grey-600">程序设计</span>
+                    </a>
+        
+                    <a href="/tags/搬运/" class="mdl-chip tag">
+                        <span class="mdl-chip__text mdl-color-text--grey-600">搬运</span>
+                    </a>
+        
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="mdl-card__actions extra">
+            <a href="https://github.com/RyougiNevermore/ryouginevermore.github.io/issues/6" target="_blank">
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+                    Discussion
+                </button>
+            </a>
+        </div>
+        
+    </div>
+
+</div>
+            <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+        <div class="mdl-logo">Crazy Ana © 2017 - 2018, Power by <a href="https://hexo.io" target="_blank" >Hexo</a> Theme <a href="https://github.com/RyougiNevermore/hexo-theme-done" target="_blank" >done</a></div>
+    </div>
+    <div class="mdl-mini-footer__right-section">
+        <ul class="mdl-mini-footer__link-list">
+            <li><a id="LICENSE" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank">Privacy &amp; Terms</a></li>
+        </ul>
+    </div>
+    <div class="mdl-tooltip mdl-tooltip--top" for="LICENSE">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</div>
+</footer>
+        </main>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/material-design-lite/1.3.0/material.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="/javascript/done.js"></script>
+
+</body>
+</html>

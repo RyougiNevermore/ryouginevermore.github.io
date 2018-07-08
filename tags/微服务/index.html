@@ -34,7 +34,7 @@
             
             <a class="mdl-navigation__link " href="/"><i class="material-icons">explore</i>&nbsp;HOME</a>
             <a class="mdl-navigation__link " href="/search/"><i class="material-icons">search</i>&nbsp;SEARCH</a>
-            <a class="mdl-navigation__link " href="/tag/"><i class="material-icons">local_offer</i>&nbsp;ARCHIVES</a>
+            <a class="mdl-navigation__link actived" href="/tag/"><i class="material-icons">local_offer</i>&nbsp;ARCHIVES</a>
             <a class="mdl-navigation__link" href="https://github.com/RyougiNevermore" target="_blank"><i class="material-icons">face</i>&nbsp;GITHUB</a>
             <a class="mdl-navigation__link " href="/about/"><i class="material-icons">description</i>&nbsp;ABOUT</a>
         </nav>
@@ -57,8 +57,13 @@
 </div>
 
         <main class="mdl-layout__content">
-            <div class="page-content">
+            <div class="page-content tag">
     <!-- Your content goes here -->
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp" style="display: -ms-flex; text-align: center; height: 70px;">
+            <h4 class="text--main">Archives<span class="mdl-color-text--grey-400">&nbsp;\&nbsp;</span>微服务</h4>
+        </div>
+    </div>
     <div class="mdl-grid">
         <!-- page card >>> -->
 
@@ -67,29 +72,22 @@
 
     
     
-    <div class="mdl-card__title" onclick="jump('/2018/07/12/怎么实现一个多消费者无锁的队列/')" style="background: url('/material/material-19.jpg') center / cover; cursor: pointer;">
-        <h2 class="mdl-card__title-text text--bold" onclick="jump('/2018/07/12/怎么实现一个多消费者无锁的队列/')">
-            怎么实现一个多消费者无锁的队列
+    <div class="mdl-card__title" onclick="jump('/2017/07/10/微服务应该是事件驱动：-自洽-vs-当局/')" style="background: url('/material/material-24.jpg') center / cover; cursor: pointer;">
+        <h2 class="mdl-card__title-text text--bold" onclick="jump('/2017/07/10/微服务应该是事件驱动：-自洽-vs-当局/')">
+            微服务应该是事件驱动： 自洽 vs 当局
         </h2>
     </div>
     <!-- description -->
     <div class="mdl-card__supporting-text">
         <p class="description">
             
-            由带锁的多线程访问的单个生产者不会解决你的问题，因为它只是转移到您自己的程序从干扰侧锁定。
-解决你的问题从您需要的事件模型的类型各不相同。即你需要的事件按时间顺序; 消耗吗合并;或任何特殊的要求。既然你要处理干扰和多生产者，这听起来非常像外汇交易系统:-)不过，根据我的经验，假定你需要按时间顺序排列顺序每个生产者但不在乎关于混合生产者之间的事件，我会推荐你做合并线程队列。
-结构是
-
-每个生产者生产数据并放入其自己命名的队列
-工作线程不断对队列进行检查。为每个队列中删除一个或多个项目并把它放到你单个生产者干扰单个生产者。
-
-请注意，在上述情况中，
-
-每个生产者队列是一个单个生产者单个消费者...
+            前言在一系列的假设与实践中去何构建 microservices 使用事件驱动的方法，得出事件驱动唯一真正的方式打造 microservices或任何复杂分布式体系结构。
+事件驱动与解耦事件驱动可以解决服务解耦，以及服务隔离。微服务间光靠请求访问是不科学，某种意义上说，它们并没有解耦隔离，最终还是耦合在数据库上，从而导致数据库的集群会越来越庞大，很难就就。一次请求，先访问服务a，然后需要访问服务b，那这次请求边界则是服务a加上服务b，意味着这两个服务可以视为一个服务。同时，额外的同步的请求会带来更多的隐患。这就是当局。服务a在这个环境里是要依赖其他服务的状态，且是同步的。
+基于上述的场景，...
             
         </p>
         <div class="create_time">
-            28th July 12th 2018
+            28th July 10th 2017
         </div>
     </div>
     
@@ -99,12 +97,16 @@
             <span class="mdl-chip__text mdl-color-text--grey-600">简述</span>
         </a>
         
-        <a href="/tags/无锁/" class="mdl-chip tag">
-            <span class="mdl-chip__text mdl-color-text--grey-600">无锁</span>
+        <a href="/tags/微服务/" class="mdl-chip tag">
+            <span class="mdl-chip__text mdl-color-text--grey-600">微服务</span>
         </a>
         
-        <a href="/tags/队列/" class="mdl-chip tag">
-            <span class="mdl-chip__text mdl-color-text--grey-600">队列</span>
+        <a href="/tags/EDA/" class="mdl-chip tag">
+            <span class="mdl-chip__text mdl-color-text--grey-600">EDA</span>
+        </a>
+        
+        <a href="/tags/隔离/" class="mdl-chip tag">
+            <span class="mdl-chip__text mdl-color-text--grey-600">隔离</span>
         </a>
         
     </div>
@@ -113,7 +115,7 @@
     <div class="mdl-card__actions mdl-card--border">
         <div class="mdl-grid padding-0" >
             <div class="mdl-cell mdl-cell--12-col" >
-                <button class="mdl-button mdl-js-button mdl-button--accent mdl-color--grey-200 center" onclick="jump('/2018/07/12/怎么实现一个多消费者无锁的队列/')">
+                <button class="mdl-button mdl-js-button mdl-button--accent mdl-color--grey-200 center" onclick="jump('/2017/07/10/微服务应该是事件驱动：-自洽-vs-当局/')">
                     READ
                 </button>
             </div>
@@ -135,7 +137,7 @@
         <nav class="mdl-navigation mdl-layout--large-screen-only">
             
             
-            <a href="/archives/2018/" class="pagination-nav__button">
+            <a href="/tags/微服务/" class="pagination-nav__button">
                 <button class="mdl-navigation__link mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent ">
                     1
                 </button>

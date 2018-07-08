@@ -34,7 +34,7 @@
             
             <a class="mdl-navigation__link " href="/"><i class="material-icons">explore</i>&nbsp;HOME</a>
             <a class="mdl-navigation__link " href="/search/"><i class="material-icons">search</i>&nbsp;SEARCH</a>
-            <a class="mdl-navigation__link " href="/tag/"><i class="material-icons">local_offer</i>&nbsp;ARCHIVES</a>
+            <a class="mdl-navigation__link actived" href="/tag/"><i class="material-icons">local_offer</i>&nbsp;ARCHIVES</a>
             <a class="mdl-navigation__link" href="https://github.com/RyougiNevermore" target="_blank"><i class="material-icons">face</i>&nbsp;GITHUB</a>
             <a class="mdl-navigation__link " href="/about/"><i class="material-icons">description</i>&nbsp;ABOUT</a>
         </nav>
@@ -57,8 +57,13 @@
 </div>
 
         <main class="mdl-layout__content">
-            <div class="page-content">
+            <div class="page-content tag">
     <!-- Your content goes here -->
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp" style="display: -ms-flex; text-align: center; height: 70px;">
+            <h4 class="text--main">Archives<span class="mdl-color-text--grey-400">&nbsp;\&nbsp;</span>Postgres</h4>
+        </div>
+    </div>
     <div class="mdl-grid">
         <!-- page card >>> -->
 
@@ -67,44 +72,38 @@
 
     
     
-    <div class="mdl-card__title" onclick="jump('/2018/07/12/怎么实现一个多消费者无锁的队列/')" style="background: url('/material/material-19.jpg') center / cover; cursor: pointer;">
-        <h2 class="mdl-card__title-text text--bold" onclick="jump('/2018/07/12/怎么实现一个多消费者无锁的队列/')">
-            怎么实现一个多消费者无锁的队列
+    <div class="mdl-card__title" onclick="jump('/2017/07/09/Postgres-配置-内存设置/')" style="background: url('/material/material-51.jpg') center / cover; cursor: pointer;">
+        <h2 class="mdl-card__title-text text--bold" onclick="jump('/2017/07/09/Postgres-配置-内存设置/')">
+            Postgres 配置 -- 内存设置
         </h2>
     </div>
     <!-- description -->
     <div class="mdl-card__supporting-text">
         <p class="description">
             
-            由带锁的多线程访问的单个生产者不会解决你的问题，因为它只是转移到您自己的程序从干扰侧锁定。
-解决你的问题从您需要的事件模型的类型各不相同。即你需要的事件按时间顺序; 消耗吗合并;或任何特殊的要求。既然你要处理干扰和多生产者，这听起来非常像外汇交易系统:-)不过，根据我的经验，假定你需要按时间顺序排列顺序每个生产者但不在乎关于混合生产者之间的事件，我会推荐你做合并线程队列。
-结构是
-
-每个生产者生产数据并放入其自己命名的队列
-工作线程不断对队列进行检查。为每个队列中删除一个或多个项目并把它放到你单个生产者干扰单个生产者。
-
-请注意，在上述情况中，
-
-每个生产者队列是一个单个生产者单个消费者...
+            前言配置文件postgres.conf中的很多设置都会影响性能。其中关于内存设置是较为关键的。
+shared_buffers这是最重要的参数，postgresql通过shared_buffers和内核/磁盘打交道。 因此应该尽量大，让更多的数据缓存在shared_buffers中，通常设置为实际RAM的10％是合理的，比如50000(400M) 
+work_mem在pgsql 8.0之前叫做sort_mem。postgresql在执行排序操作时，会根据work_mem的大小决定是否将一个大的结果集拆分为几个小的和work_mem查不多大小的临时文件。
+显然拆分的结果是降低了排序的速度。因...
             
         </p>
         <div class="create_time">
-            28th July 12th 2018
+            27th July 9th 2017
         </div>
     </div>
     
     <div class="mdl-card__supporting-text padding-top-0 ">
         
-        <a href="/tags/简述/" class="mdl-chip tag">
-            <span class="mdl-chip__text mdl-color-text--grey-600">简述</span>
+        <a href="/tags/数据库/" class="mdl-chip tag">
+            <span class="mdl-chip__text mdl-color-text--grey-600">数据库</span>
         </a>
         
-        <a href="/tags/无锁/" class="mdl-chip tag">
-            <span class="mdl-chip__text mdl-color-text--grey-600">无锁</span>
+        <a href="/tags/Postgres/" class="mdl-chip tag">
+            <span class="mdl-chip__text mdl-color-text--grey-600">Postgres</span>
         </a>
         
-        <a href="/tags/队列/" class="mdl-chip tag">
-            <span class="mdl-chip__text mdl-color-text--grey-600">队列</span>
+        <a href="/tags/优化/" class="mdl-chip tag">
+            <span class="mdl-chip__text mdl-color-text--grey-600">优化</span>
         </a>
         
     </div>
@@ -113,7 +112,7 @@
     <div class="mdl-card__actions mdl-card--border">
         <div class="mdl-grid padding-0" >
             <div class="mdl-cell mdl-cell--12-col" >
-                <button class="mdl-button mdl-js-button mdl-button--accent mdl-color--grey-200 center" onclick="jump('/2018/07/12/怎么实现一个多消费者无锁的队列/')">
+                <button class="mdl-button mdl-js-button mdl-button--accent mdl-color--grey-200 center" onclick="jump('/2017/07/09/Postgres-配置-内存设置/')">
                     READ
                 </button>
             </div>
@@ -135,7 +134,7 @@
         <nav class="mdl-navigation mdl-layout--large-screen-only">
             
             
-            <a href="/archives/2018/" class="pagination-nav__button">
+            <a href="/tags/Postgres/" class="pagination-nav__button">
                 <button class="mdl-navigation__link mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent ">
                     1
                 </button>

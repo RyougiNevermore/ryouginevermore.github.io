@@ -34,7 +34,7 @@
             
             <a class="mdl-navigation__link " href="/"><i class="material-icons">explore</i>&nbsp;HOME</a>
             <a class="mdl-navigation__link " href="/search/"><i class="material-icons">search</i>&nbsp;SEARCH</a>
-            <a class="mdl-navigation__link " href="/tag/"><i class="material-icons">local_offer</i>&nbsp;ARCHIVES</a>
+            <a class="mdl-navigation__link actived" href="/tag/"><i class="material-icons">local_offer</i>&nbsp;ARCHIVES</a>
             <a class="mdl-navigation__link" href="https://github.com/RyougiNevermore" target="_blank"><i class="material-icons">face</i>&nbsp;GITHUB</a>
             <a class="mdl-navigation__link " href="/about/"><i class="material-icons">description</i>&nbsp;ABOUT</a>
         </nav>
@@ -57,49 +57,107 @@
 </div>
 
         <main class="mdl-layout__content">
+            <div class="page-content tag">
+    <!-- Your content goes here -->
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp" style="display: -ms-flex; text-align: center; height: 70px;">
+            <h4 class="text--main">Archives<span class="mdl-color-text--grey-400">&nbsp;\&nbsp;</span>理论</h4>
+        </div>
+    </div>
+    <div class="mdl-grid">
+        <!-- page card >>> -->
+
+<div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp">
+    <!-- title and bg -->
+
+    
+    
+    <div class="mdl-card__title" onclick="jump('/2017/07/23/SOLID/')" style="background: url('/material/material-11.jpg') center / cover; cursor: pointer;">
+        <h2 class="mdl-card__title-text text--bold" onclick="jump('/2017/07/23/SOLID/')">
+            SOLID
+        </h2>
+    </div>
+    <!-- description -->
+    <div class="mdl-card__supporting-text">
+        <p class="description">
             
-
-<div class="page-content post mdl-grid">
-    <!-- page card >>> -->
-    <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp">
-        <!-- title and bg -->
-        <div class="mdl-card__title" style="background: url('/material/material-38.jpg') center / cover; cursor: pointer;">
-            <h2 class="mdl-card__title-text">
-                hello-ana
-            </h2>
+            SRPThe Single Responsibility Principle。
+单一责任原则，只做一件事，不影响其他。
+OCPThe Open Closed Principle。
+开放封闭原则，支持替换的服务，而不用修改客户模块，接口化，修改实现，最小修改面，单一修改。 
+LSPThe Liskov Substitution Principle。
+里氏替换原则，在考虑一个特定设计是否恰当时，不能完全孤立地来看这个解决方案，必须要根据该设计的使用者所作出的合理假设来审视它。 
+ISPThe Interface Segregation Principle
+接口分离原则，使用多个专门的接口比使...
+            
+        </p>
+        <div class="create_time">
+            29th July 23rd 2017
         </div>
-        <!-- create time -->
-        <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--12-col mdl-color-text--grey-700 mdl-card__supporting-text meta">
-                <div><strong>28th July 9th 2018</strong></div>
-            </div>
-        </div>
-        <!-- description -->
-        <div class="mdl-card__supporting-text">
-            <div class="mdl-grid post-content">
-                <div class="mdl-cell mdl-cell--12-col">
-                    <h1 id="hello-anan"><a href="#hello-anan" class="headerlink" title="hello anan"></a>hello anan</h1><p>hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello </p>
-
-                </div>
-            </div>
-        </div>
-        <!-- tags -->
+    </div>
+    
+    <div class="mdl-card__supporting-text padding-top-0 ">
         
-        <div class="mdl-card__actions ">
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--12-col">
+        <a href="/tags/简述/" class="mdl-chip tag">
+            <span class="mdl-chip__text mdl-color-text--grey-600">简述</span>
+        </a>
         
-                    <a href="/tags/hello/" class="mdl-chip tag">
-                        <span class="mdl-chip__text mdl-color-text--grey-600">hello</span>
-                    </a>
+        <a href="/tags/程序设计/" class="mdl-chip tag">
+            <span class="mdl-chip__text mdl-color-text--grey-600">程序设计</span>
+        </a>
         
-                </div>
-            </div>
-        </div>
-        
+        <a href="/tags/理论/" class="mdl-chip tag">
+            <span class="mdl-chip__text mdl-color-text--grey-600">理论</span>
+        </a>
         
     </div>
+    
+    <!-- tags -->
+    <div class="mdl-card__actions mdl-card--border">
+        <div class="mdl-grid padding-0" >
+            <div class="mdl-cell mdl-cell--12-col" >
+                <button class="mdl-button mdl-js-button mdl-button--accent mdl-color--grey-200 center" onclick="jump('/2017/07/23/SOLID/')">
+                    READ
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <<< page card -->
 
+
+        <!-- pagination -->
+<nav class="pagination-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--grey mdl-color-text--white" role="presentation" data-upgraded=",MaterialButton,MaterialRipple" disabled>
+        <i class="material-icons">arrow_back</i>
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+    </button>
+    
+    <div class="section-spacer">
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+            
+            
+            <a href="/tags/理论/" class="pagination-nav__button">
+                <button class="mdl-navigation__link mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent ">
+                    1
+                </button>
+            </a>
+            
+        </nav>
+
+        <nav class="mdl-navigation mdl-layout--small-screen-only">
+            <span class="pagination-nav__number mdl-color-text--grey">1</span>
+        </nav>
+    </div>
+    
+    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--grey mdl-color-text--white" role="presentation" data-upgraded=",MaterialButton,MaterialRipple" disabled>
+        <i class="material-icons">arrow_forward</i>
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+    </button>
+    
+</nav>
+    </div>
 </div>
             <footer class="mdl-mini-footer">
     <div class="mdl-mini-footer__left-section">

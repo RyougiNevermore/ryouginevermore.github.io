@@ -34,7 +34,7 @@
             
             <a class="mdl-navigation__link " href="/"><i class="material-icons">explore</i>&nbsp;HOME</a>
             <a class="mdl-navigation__link " href="/search/"><i class="material-icons">search</i>&nbsp;SEARCH</a>
-            <a class="mdl-navigation__link " href="/tag/"><i class="material-icons">local_offer</i>&nbsp;ARCHIVES</a>
+            <a class="mdl-navigation__link actived" href="/tag/"><i class="material-icons">local_offer</i>&nbsp;ARCHIVES</a>
             <a class="mdl-navigation__link" href="https://github.com/RyougiNevermore" target="_blank"><i class="material-icons">face</i>&nbsp;GITHUB</a>
             <a class="mdl-navigation__link " href="/about/"><i class="material-icons">description</i>&nbsp;ABOUT</a>
         </nav>
@@ -57,8 +57,13 @@
 </div>
 
         <main class="mdl-layout__content">
-            <div class="page-content">
+            <div class="page-content tag">
     <!-- Your content goes here -->
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp" style="display: -ms-flex; text-align: center; height: 70px;">
+            <h4 class="text--main">Archives<span class="mdl-color-text--grey-400">&nbsp;\&nbsp;</span>C</h4>
+        </div>
+    </div>
     <div class="mdl-grid">
         <!-- page card >>> -->
 
@@ -67,44 +72,38 @@
 
     
     
-    <div class="mdl-card__title" onclick="jump('/2018/07/12/怎么实现一个多消费者无锁的队列/')" style="background: url('/material/material-19.jpg') center / cover; cursor: pointer;">
-        <h2 class="mdl-card__title-text text--bold" onclick="jump('/2018/07/12/怎么实现一个多消费者无锁的队列/')">
-            怎么实现一个多消费者无锁的队列
+    <div class="mdl-card__title" onclick="jump('/2017/07/09/MMAP-FOR-C/')" style="background: url('/material/material-35.jpg') center / cover; cursor: pointer;">
+        <h2 class="mdl-card__title-text text--bold" onclick="jump('/2017/07/09/MMAP-FOR-C/')">
+            MMAP FOR C
         </h2>
     </div>
     <!-- description -->
     <div class="mdl-card__supporting-text">
         <p class="description">
             
-            由带锁的多线程访问的单个生产者不会解决你的问题，因为它只是转移到您自己的程序从干扰侧锁定。
-解决你的问题从您需要的事件模型的类型各不相同。即你需要的事件按时间顺序; 消耗吗合并;或任何特殊的要求。既然你要处理干扰和多生产者，这听起来非常像外汇交易系统:-)不过，根据我的经验，假定你需要按时间顺序排列顺序每个生产者但不在乎关于混合生产者之间的事件，我会推荐你做合并线程队列。
-结构是
-
-每个生产者生产数据并放入其自己命名的队列
-工作线程不断对队列进行检查。为每个队列中删除一个或多个项目并把它放到你单个生产者干扰单个生产者。
-
-请注意，在上述情况中，
-
-每个生产者队列是一个单个生产者单个消费者...
+            说明mmap （一种内存映射文件的方法） 编辑。mmap将一个文件或者其它对象映射进内存。文件被映射到多个页上，如果文件的大小不是所有页的大小之和，最后一个页不被使用的空间将会清零。mmap在用户空间映射调用系统中作用很大。
+头文件 &lt;sys/mman.h&gt;函数原型
+123void* mmap(void* start,size_t length,int prot,int flags,int fd,off_t offset);int munmap(void* start,size_t length);
+mmap()[1] 必须以PAGE_SIZE为单位进行映射，而内存也只能以页...
             
         </p>
         <div class="create_time">
-            28th July 12th 2018
+            27th July 9th 2017
         </div>
     </div>
     
     <div class="mdl-card__supporting-text padding-top-0 ">
         
-        <a href="/tags/简述/" class="mdl-chip tag">
-            <span class="mdl-chip__text mdl-color-text--grey-600">简述</span>
+        <a href="/tags/MMAP/" class="mdl-chip tag">
+            <span class="mdl-chip__text mdl-color-text--grey-600">MMAP</span>
         </a>
         
-        <a href="/tags/无锁/" class="mdl-chip tag">
-            <span class="mdl-chip__text mdl-color-text--grey-600">无锁</span>
+        <a href="/tags/C/" class="mdl-chip tag">
+            <span class="mdl-chip__text mdl-color-text--grey-600">C</span>
         </a>
         
-        <a href="/tags/队列/" class="mdl-chip tag">
-            <span class="mdl-chip__text mdl-color-text--grey-600">队列</span>
+        <a href="/tags/PROGRAMMING/" class="mdl-chip tag">
+            <span class="mdl-chip__text mdl-color-text--grey-600">PROGRAMMING</span>
         </a>
         
     </div>
@@ -113,7 +112,7 @@
     <div class="mdl-card__actions mdl-card--border">
         <div class="mdl-grid padding-0" >
             <div class="mdl-cell mdl-cell--12-col" >
-                <button class="mdl-button mdl-js-button mdl-button--accent mdl-color--grey-200 center" onclick="jump('/2018/07/12/怎么实现一个多消费者无锁的队列/')">
+                <button class="mdl-button mdl-js-button mdl-button--accent mdl-color--grey-200 center" onclick="jump('/2017/07/09/MMAP-FOR-C/')">
                     READ
                 </button>
             </div>
@@ -135,7 +134,7 @@
         <nav class="mdl-navigation mdl-layout--large-screen-only">
             
             
-            <a href="/archives/2018/" class="pagination-nav__button">
+            <a href="/tags/C/" class="pagination-nav__button">
                 <button class="mdl-navigation__link mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent ">
                     1
                 </button>

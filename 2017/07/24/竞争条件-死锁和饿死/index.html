@@ -57,104 +57,78 @@
 </div>
 
         <main class="mdl-layout__content">
-            <div class="page-content">
-    <!-- Your content goes here -->
-    <div class="mdl-grid">
-        <!-- page card >>> -->
-
-<div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp">
-    <!-- title and bg -->
-
-    
-    
-    <div class="mdl-card__title" onclick="jump('/2018/07/12/怎么实现一个多消费者无锁的队列/')" style="background: url('/material/material-19.jpg') center / cover; cursor: pointer;">
-        <h2 class="mdl-card__title-text text--bold" onclick="jump('/2018/07/12/怎么实现一个多消费者无锁的队列/')">
-            怎么实现一个多消费者无锁的队列
-        </h2>
-    </div>
-    <!-- description -->
-    <div class="mdl-card__supporting-text">
-        <p class="description">
             
-            由带锁的多线程访问的单个生产者不会解决你的问题，因为它只是转移到您自己的程序从干扰侧锁定。
-解决你的问题从您需要的事件模型的类型各不相同。即你需要的事件按时间顺序; 消耗吗合并;或任何特殊的要求。既然你要处理干扰和多生产者，这听起来非常像外汇交易系统:-)不过，根据我的经验，假定你需要按时间顺序排列顺序每个生产者但不在乎关于混合生产者之间的事件，我会推荐你做合并线程队列。
-结构是
 
-每个生产者生产数据并放入其自己命名的队列
-工作线程不断对队列进行检查。为每个队列中删除一个或多个项目并把它放到你单个生产者干扰单个生产者。
-
-请注意，在上述情况中，
-
-每个生产者队列是一个单个生产者单个消费者...
-            
-        </p>
-        <div class="create_time">
-            28th July 12th 2018
+<div class="page-content post mdl-grid">
+    <!-- page card >>> -->
+    <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--2dp">
+        <!-- title and bg -->
+        <div class="mdl-card__title" style="background: url('/material/material-25.jpg') center / cover; cursor: pointer;">
+            <h2 class="mdl-card__title-text">
+                竞争条件: 死锁和饿死
+            </h2>
         </div>
-    </div>
-    
-    <div class="mdl-card__supporting-text padding-top-0 ">
-        
-        <a href="/tags/简述/" class="mdl-chip tag">
-            <span class="mdl-chip__text mdl-color-text--grey-600">简述</span>
-        </a>
-        
-        <a href="/tags/无锁/" class="mdl-chip tag">
-            <span class="mdl-chip__text mdl-color-text--grey-600">无锁</span>
-        </a>
-        
-        <a href="/tags/队列/" class="mdl-chip tag">
-            <span class="mdl-chip__text mdl-color-text--grey-600">队列</span>
-        </a>
-        
-    </div>
-    
-    <!-- tags -->
-    <div class="mdl-card__actions mdl-card--border">
-        <div class="mdl-grid padding-0" >
-            <div class="mdl-cell mdl-cell--12-col" >
-                <button class="mdl-button mdl-js-button mdl-button--accent mdl-color--grey-200 center" onclick="jump('/2018/07/12/怎么实现一个多消费者无锁的队列/')">
-                    READ
-                </button>
+        <!-- create time -->
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col mdl-color-text--grey-700 mdl-card__supporting-text meta">
+                <div><strong>30th July 24th 2017</strong></div>
             </div>
         </div>
-    </div>
-</div>
-<!-- <<< page card -->
+        <!-- description -->
+        <div class="mdl-card__supporting-text">
+            <div class="mdl-grid post-content">
+                <div class="mdl-cell mdl-cell--12-col">
+                    <p>当多个进程都企图对共享数据进行某种处理，而最后的结果又取决于进程运行的顺序时，则我们认为这发生了竞争条件（race condition）。</p>
+<p>死锁是同步的，饥饿时异步的。</p>
+<p>死锁可以认为是两个线程或进程同时在请求对方占有的资源，饥饿可以认为是一个线程或是进程在无限的等待另外两个或多个线程或进程占有的但是不会往外释放的资源出现以下四种情况会产生死锁：</p>
+<ul>
+<li>相互排斥。一个线程或进程永远占有共享资源，比如，独占该资源。</li>
+<li>循环等待。例如，进程A在等待进程B，进程B在等待进程C，而进程C又在等待进程A。</li>
+<li>部分分配。资源被部分分配，例如，进程A和B都需要访问一个文件，同时需要用到打印机，进程A得到了这个文件资源，进程B得到了打印机资源，但两个进程都不能获得全部的资源了。</li>
+<li>缺少优先权。一个进程获得了该资源但是一直不释放该资源，即使该进程处于阻塞状态。</li>
+</ul>
+<p>按照前面的分析，情况1和情况4是线程或进程无休止的等待另外的几个线程或进程所占据的资源。针对上面可能出现死锁的几种情况，可以给出预防措施，比如控制线程或进程如果判断不能够获取到</p>
+<p>饿死（starvation） 是一个线程长时间得不到需要的资源而不能执行的现象。 有人饿死并不代表着出现了死锁。</p>
+<p>很有可能系统还能很好的进行。</p>
+<p>所以，没有出现死锁并不能就认为系统是完好的。还要保证没有出现饿死的现象。</p>
+<p>避免饿死就应该是采用队列的方式，保证每个人都有机会获得请求的资源。 当然实现方式可以很多个变化，比如优先级，时间片，等，都是“队列”的特殊形式。</p>
 
-
-        <!-- pagination -->
-<nav class="pagination-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
-    
-    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--grey mdl-color-text--white" role="presentation" data-upgraded=",MaterialButton,MaterialRipple" disabled>
-        <i class="material-icons">arrow_back</i>
-        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
-    </button>
-    
-    <div class="section-spacer">
-        <nav class="mdl-navigation mdl-layout--large-screen-only">
-            
-            
-            <a href="/archives/2018/" class="pagination-nav__button">
-                <button class="mdl-navigation__link mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent ">
-                    1
+                </div>
+            </div>
+        </div>
+        <!-- tags -->
+        
+        <div class="mdl-card__actions ">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col">
+        
+                    <a href="/tags/简述/" class="mdl-chip tag">
+                        <span class="mdl-chip__text mdl-color-text--grey-600">简述</span>
+                    </a>
+        
+                    <a href="/tags/程序设计/" class="mdl-chip tag">
+                        <span class="mdl-chip__text mdl-color-text--grey-600">程序设计</span>
+                    </a>
+        
+                    <a href="/tags/锁/" class="mdl-chip tag">
+                        <span class="mdl-chip__text mdl-color-text--grey-600">锁</span>
+                    </a>
+        
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="mdl-card__actions extra">
+            <a href="https://github.com/RyougiNevermore/ryouginevermore.github.io/issues/10" target="_blank">
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+                    Discussion
                 </button>
             </a>
-            
-        </nav>
+        </div>
+        
+    </div>
 
-        <nav class="mdl-navigation mdl-layout--small-screen-only">
-            <span class="pagination-nav__number mdl-color-text--grey">1</span>
-        </nav>
-    </div>
-    
-    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--grey mdl-color-text--white" role="presentation" data-upgraded=",MaterialButton,MaterialRipple" disabled>
-        <i class="material-icons">arrow_forward</i>
-        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
-    </button>
-    
-</nav>
-    </div>
 </div>
             <footer class="mdl-mini-footer">
     <div class="mdl-mini-footer__left-section">
